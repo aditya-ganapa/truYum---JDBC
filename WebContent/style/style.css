@@ -1,0 +1,143 @@
+nav {
+	background-color: #684944;
+	height: 70px;
+}
+
+nav p {
+	margin-left: 30px;
+}
+
+.home-link {
+	color: #e2e4e3;
+	font-size: 30px;
+	text-decoration: none;
+}
+
+img {
+	height: 50px;
+	margin-top: 10px;
+}
+
+h1, section h2 {
+	margin-left: 60px;
+	margin-top: 60px;
+}
+
+#home-text {
+	margin-left: 60px;
+}
+
+.admin-menu-link, .customer-menu-link, .cart-link {
+	color: #e2e4e3;
+	font-size: 16px;
+	float: right;
+	padding-top: 40px;
+	padding-right: 10%;
+}
+
+.customer-menu-link {
+	padding-right: 60px;
+}
+
+table {
+	margin-top: 30px;
+	margin-left: 60px;
+	width: 90%;
+}
+
+th {
+	text-align: left;
+}
+
+td {
+	height: 25px;
+}
+
+button {
+	background-color: #684944;
+	color: #e2e4e3;
+	padding: 15px 40px;
+	text-align: center;
+	border: none;
+	margin-left: 60px;
+}
+
+form {
+	margin-left: 60px;
+}
+
+form table {
+	margin-top: 0px;
+	margin-left: 0px;
+	width: 45%;
+}
+
+#field-title {
+	width: 100%;
+}
+
+#field-price {
+	width: 80px;
+}
+
+#field-dateOfLaunch {
+	width: 120px;
+}
+
+#field-category {
+	width: 100%;
+}
+
+form td {
+	height: 50px;
+}
+
+input[type=radio] {
+	width: 18px;
+	height: 18px;
+}
+
+input[type=checkbox] {
+	width: 18px;
+	height: 18px;
+}
+
+input[type=submit] {
+	background-color: #684944;
+	color: #e2e4e3;
+	padding: 15px 40px;
+	text-align: center;
+	border: none;
+}
+
+.notification {
+	color: #00b300;
+	font-weight: bold;
+	text-align: center;
+}
+
+.edit-notification {
+	color: #00b300;
+	font-weight: bold;
+	margin-left: 60px;
+}
+
+.empty {
+	color: #86827f;
+	font-weight: bold;
+	margin-left: 60px;
+}
+
+.empty a {
+	color: #0066ff;
+}
+
+footer {
+	margin-top: 60px;
+	background-color: #bfbfbf;
+	height: 50px;
+}
+
+footer p {
+	padding-top: 15px;
+}

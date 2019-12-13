@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="js/script.js"></script>
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+</head>
+<body>
+<nav>
+	<p>
+		<a href="home.html" class="home-link">
+			truYum
+			<img src="images/logo.jpg" alt="logo">
+		</a>
+		<a href="ShowMenuItemListAdmin" class="admin-menu-link">Menu</a>
+	</p>
+</nav>
+<section>
+	<h2>Add Menu Item</h2>
+	<form name="addMenuItemForm" onsubmit="return validateAddMenuItemForm()" method="post" action="AddMenuItem">
+		<table>
+			<tr>
+				<td>
+					<label for="field-id">Id</label><br>
+					<input type="text" id="field-id" name="id">
+				</td>
+				<td colspan="3">
+					<label for="field-title">Name</label><br>
+					<input type="text" id="field-title" name="title">
+				</td>
+			</tr>
+			<tr>
+				<td>
+	    			<label for="field-price">Price (Rs.)</label><br>
+					<input type="text" id="field-price" name="price">
+				</td>
+				<td>
+					Active<br>
+					<input type="radio" id="field-inStock-yes" name="inStock" value="yes"><label for="field-inStock-yes"> Yes </label><input type="radio" name="inStock" id="field-inStock-no" value="no"><label for="field-inStock-no"> No</label>
+				</td>
+				<td>
+					<label for="field-dateOfLaunch">Date of Launch</label><br>
+					<input type="text" id="field-dateOfLaunch" name="dateOfLaunch">
+				</td>
+				<td>
+					<label for="field-category">Category</label><br>
+					<select id="field-category" name="category">
+						<option value=""></option>
+						<option value="Starters">Starters</option>
+						<option value="Main Course">Main Course</option>
+						<option value="Dessert">Dessert</option>
+						<option value="Drinks">Drinks</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" id="field-freeDelivery" name="freeDelivery" value="yes"><label for="field-freeDelivery"> Free Delivery</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="submit" name="submit" value="Add">
+				</td>
+			</tr>
+		</table>
+	</form>
+</section>
+<footer>	
+  <p>Copyright &copy; 2019</p>
+</footer>
+</body>
+</html>

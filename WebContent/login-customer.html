@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="js/script.js"></script>
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+</head>
+<body>
+<nav>
+	<p>
+		<a href="home.html" class="home-link">
+			truYum
+			<img src="images/logo.jpg" alt="logo">
+		</a>
+	</p>
+</nav>
+<section>
+	<h2>Customer Login</h2>
+	<form name="loginCustomerForm" onsubmit="return validateLoginCustomerForm()" action="ShowMenuItemListCustomer">
+		<label for="field-username">Username:</label><br>
+		<input type="text" id="field-username" name="username"><br><br>
+		<label for="field-password">Password:</label><br>
+		<input type="password" id="field-password" name="password"><br><br>
+		<input type="submit" name="submit" value="Login">
+	</form>
+</section>
+<footer>
+	<p>Copyright &copy; 2019</p>
+</footer>
+</body>
+</html>
