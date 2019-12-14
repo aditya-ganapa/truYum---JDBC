@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cognizant.truyum.dao.MenuItemDao;
-import com.cognizant.truyum.dao.MenuItemDaoCollectionImpl;
+import com.cognizant.truyum.dao.MenuItemDaoSqlImpl;
 import com.cognizant.truyum.model.MenuItem;
 
 @WebServlet("/EditMenuItem")
@@ -34,12 +34,7 @@ public class EditMenuItemServlet extends HttpServlet {
 		menuItem.setCategory(request.getParameter("category"));
 		menuItem.setFreeDelivery(request.getParameter("freeDelivery") != null);
 		MenuItemDao menuItemDao = null;
-		try {
-			menuItemDao = new MenuItemDaoCollectionImpl();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		menuItemDao = new MenuItemDaoSqlImpl();
 		menuItemDao.modifyMenuItem(menuItem);
 		request.setAttribute("title", request.getParameter("title"));
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("edit-menu-item-status.jsp");

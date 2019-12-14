@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cognizant.truyum.dao.CartDao;
-import com.cognizant.truyum.dao.CartDaoCollectionImpl;
+import com.cognizant.truyum.dao.CartDaoSqlImpl;
 import com.cognizant.truyum.dao.CartEmptyException;
 import com.cognizant.truyum.model.Cart;
 
@@ -20,7 +20,7 @@ public class ShowCartServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		long userId = 1;
-		CartDao cartDao = new CartDaoCollectionImpl();
+		CartDao cartDao = new CartDaoSqlImpl();
 		Cart cart = null;
 		boolean empty = false;
 		try {

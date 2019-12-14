@@ -13,7 +13,6 @@ import com.cognizant.truyum.model.Cart;
 import com.cognizant.truyum.model.MenuItem;
 
 public class CartDaoSqlImpl implements CartDao {
-
 	@Override
 	public void addCartItem(long userId, long menuItemId) throws ParseException {
 		Connection connection = ConnectionHandler.getConnection();
@@ -78,5 +77,4 @@ public class CartDaoSqlImpl implements CartDao {
 			e.printStackTrace();
 		}
 	}
-
 }

@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cognizant.truyum.dao.CartDao;
-import com.cognizant.truyum.dao.CartDaoCollectionImpl;
+import com.cognizant.truyum.dao.CartDaoSqlImpl;
 import com.cognizant.truyum.dao.CartEmptyException;
 import com.cognizant.truyum.dao.MenuItemDao;
-import com.cognizant.truyum.dao.MenuItemDaoCollectionImpl;
+import com.cognizant.truyum.dao.MenuItemDaoSqlImpl;
 import com.cognizant.truyum.model.MenuItem;
 
 @WebServlet("/AddToCart")
@@ -25,7 +25,7 @@ public class AddToCartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		long userId = 1;
 		long menuItemId = Long.parseLong(request.getParameter("menuItemId"));
-		CartDao cartDao = new CartDaoCollectionImpl();
+		CartDao cartDao = new CartDaoSqlImpl();
 		try {
 			cartDao.addCartItem(userId, menuItemId);
 		} catch (ParseException e) {
@@ -33,12 +33,7 @@ public class AddToCartServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 			MenuItemDao menuItemDao = null;
-		try {
-			menuItemDao = new MenuItemDaoCollectionImpl();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		menuItemDao = new MenuItemDaoSqlImpl();
 		List<MenuItem> menuItemList = menuItemDao.getMenuItemListCustomer();
 		request.setAttribute("menuItemList", menuItemList);
 		request.setAttribute("addCartStatus", true);

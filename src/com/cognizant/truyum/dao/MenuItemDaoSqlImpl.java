@@ -12,7 +12,6 @@ import java.util.List;
 import com.cognizant.truyum.model.MenuItem;
 
 public class MenuItemDaoSqlImpl implements MenuItemDao {
-
 	@Override
 	public List<MenuItem> getMenuItemListAdmin() {
 		Connection connection = ConnectionHandler.getConnection();
