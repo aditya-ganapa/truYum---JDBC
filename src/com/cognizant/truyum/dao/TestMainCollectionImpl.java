@@ -6,7 +6,7 @@ import java.util.Scanner;
 import com.cognizant.truyum.model.MenuItem;
 import com.cognizant.truyum.util.DateUtil;
 
-public class TestMain {
+public class TestMainCollectionImpl {
 
 	public static void main(String[] args) throws ParseException {
 		@SuppressWarnings("resource")
@@ -90,6 +90,7 @@ public class TestMain {
 					System.out.print("\n1.View Menu Item List\n2.Add Item to Cart\n3.View Cart Items\n4.Remove Item from Cart\n5.Change User Type\nEnter Choice:");
 					switch (scanner.nextInt()) {
 					case 1:
+						System.out.println("\nMenu Items:");
 						for (MenuItem menuItem : menuItemDao.getMenuItemListCustomer())
 							System.out.println(menuItem);
 						break;

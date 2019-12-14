@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cognizant.truyum.dao.CartDao;
+import com.cognizant.truyum.dao.CartDaoCollectionImpl;
+import com.cognizant.truyum.dao.CartEmptyException;
 import com.cognizant.truyum.dao.MenuItemDao;
 import com.cognizant.truyum.dao.MenuItemDaoCollectionImpl;
 import com.cognizant.truyum.model.MenuItem;
@@ -29,7 +32,22 @@ public class ShowMenuItemListCustomerServlet extends HttpServlet {
 		}
 		List<MenuItem> menuItemList = menuItemDao.getMenuItemListCustomer();
 		request.setAttribute("menuItemList", menuItemList);
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("menu-item-list-customer.jsp");
-		requestDispatcher.forward(request, response);
+		long userId = 1;
+		long cartSize = 0;
+		boolean empty = false;
+		CartDao cartDao = new CartDaoCollectionImpl();
+		try {
+			cartSize = cartDao.getAllCartItems(userId).getMenuItemList().size();
+		} catch (CartEmptyException | NullPointerException e) {
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("menu-item-list-customer.jsp");
+			requestDispatcher.forward(request, response);
+			empty = true;
+		}
+		if(!empty) {
+			request.setAttribute("cartNotEmpty", true);
+			request.setAttribute("cartSize", cartSize);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("menu-item-list-customer.jsp");
+			requestDispatcher.forward(request, response);
+		}
 	}
 }

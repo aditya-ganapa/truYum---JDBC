@@ -22,20 +22,23 @@ public class ShowCartServlet extends HttpServlet {
 		long userId = 1;
 		CartDao cartDao = new CartDaoCollectionImpl();
 		Cart cart = null;
+		boolean empty = false;
 		try {
 			cart = cartDao.getAllCartItems(userId);
-		} catch (CartEmptyException e) {
+		} catch (CartEmptyException | NullPointerException e) {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("cart-empty.jsp");
 			requestDispatcher.forward(request, response);
-		} catch (NullPointerException e) {
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("cart-empty.jsp");
-			requestDispatcher.forward(request, response);
+			empty = true;
 		}
-		request.setAttribute("cart", cart);
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("cart.jsp");
-		try {
+		if(!empty) {
+			request.setAttribute("cart", cart);
+			request.setAttribute("cartNotEmpty", true);
+			request.setAttribute("cartSize", cart.getMenuItemList().size());
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("cart.jsp");
+	//	try {
 			requestDispatcher.forward(request, response);
-		} catch (IllegalStateException e) {
+	//	} catch (IllegalStateException e) {
+	//	}
 		}
 	}
 }

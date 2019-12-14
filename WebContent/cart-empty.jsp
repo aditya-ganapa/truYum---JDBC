@@ -11,6 +11,7 @@
 			truYum
 			<img src="images/logo.jpg" alt="logo">
 		</a>
+		<a href="home.html" class="customer-logout-link">Logout</a>
 		<a href="ShowCart" class="cart-link">Cart</a>
 		<a href="ShowMenuItemListCustomer" class="customer-menu-link">Menu</a>
 	</p>

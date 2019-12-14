@@ -11,6 +11,7 @@
 			truYum
 			<img src="images/logo.jpg" alt="logo">
 		</a>
+		<a href="home.html" class="admin-logout-link">Logout</a>
 		<a href="ShowMenuItemListAdmin" class="admin-menu-link">Menu</a>
 	</p>
 </nav>

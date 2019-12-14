@@ -13,7 +13,7 @@ public class ConnectionHandler {
 	public static Connection getConnection() {
 		FileInputStream fileInputStream = null;
 		try {
-			fileInputStream = new FileInputStream("connection.properties");
+			fileInputStream = new FileInputStream("src/connection.properties");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,3 +1,5 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,13 +13,12 @@
 			truYum
 			<img src="images/logo.jpg" alt="logo">
 		</a>
-		<a href="ShowCart" class="cart-link">Cart</a>
+		<a href="home.html" class="customer-logout-link">Logout</a>
+		<a href="ShowCart" class="cart-link">Cart<c:if test="${cartNotEmpty}">[${cartSize}]</c:if></a>
 		<a href="ShowMenuItemListCustomer" class="customer-menu-link">Menu</a>
 	</p>
 </nav>
 <section>
-	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 	<h2>Menu Items</h2>
 	<c:if test="${addCartStatus}">
 		<p class="notification">${addedCartItemName} added to cart successfully.</p>

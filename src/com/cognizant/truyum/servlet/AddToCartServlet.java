@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cognizant.truyum.dao.CartDao;
 import com.cognizant.truyum.dao.CartDaoCollectionImpl;
+import com.cognizant.truyum.dao.CartEmptyException;
 import com.cognizant.truyum.dao.MenuItemDao;
 import com.cognizant.truyum.dao.MenuItemDaoCollectionImpl;
 import com.cognizant.truyum.model.MenuItem;
@@ -41,7 +42,14 @@ public class AddToCartServlet extends HttpServlet {
 		List<MenuItem> menuItemList = menuItemDao.getMenuItemListCustomer();
 		request.setAttribute("menuItemList", menuItemList);
 		request.setAttribute("addCartStatus", true);
+		request.setAttribute("cartNotEmpty", true);
 		request.setAttribute("addedCartItemName", menuItemDao.getMenuItem(menuItemId).getName());
+		try {
+			request.setAttribute("cartSize", cartDao.getAllCartItems(userId).getMenuItemList().size());
+		} catch (CartEmptyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("menu-item-list-customer.jsp");
 		requestDispatcher.forward(request, response);
 	}

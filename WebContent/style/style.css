@@ -27,7 +27,7 @@ h1, section h2 {
 	margin-left: 60px;
 }
 
-.admin-menu-link, .customer-menu-link, .cart-link {
+.admin-menu-link, .customer-menu-link, .cart-link, .customer-logout-link, .admin-logout-link {
 	color: #e2e4e3;
 	font-size: 16px;
 	float: right;
@@ -35,7 +35,7 @@ h1, section h2 {
 	padding-right: 10%;
 }
 
-.customer-menu-link {
+.customer-menu-link, .cart-link, .admin-menu-link {
 	padding-right: 60px;
 }
 
