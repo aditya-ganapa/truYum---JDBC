@@ -17,7 +17,7 @@
 	</p>
 </nav>
 <section>
-	<h2>Edit Menu Item Status</h2>
+	<h2>Add Menu Item Status</h2>
 	<p class="edit-notification">${title} added to menu successfully.</p>
 </section>
 <footer>
