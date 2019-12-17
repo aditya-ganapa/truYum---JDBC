@@ -29,11 +29,11 @@ public class MenuItemDaoCollectionImpl implements MenuItemDao {
 
 	@Override
 	public List<MenuItem> getMenuItemListCustomer() {
-		List<MenuItem> arrayList = new ArrayList<>();
+		List<MenuItem> menuItemListCustomer = new ArrayList<>();
 		for (MenuItem menuItem : menuItemList)
 			if ((menuItem.getDateOfLaunch().compareTo(new Date()) <= 0) && menuItem.isActive())
-				arrayList.add(menuItem);
-		return arrayList;
+				menuItemListCustomer.add(menuItem);
+		return menuItemListCustomer;
 	}
 
 	@Override

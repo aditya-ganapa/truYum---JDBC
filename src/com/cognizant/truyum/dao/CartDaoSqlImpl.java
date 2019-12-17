@@ -56,8 +56,8 @@ public class CartDaoSqlImpl implements CartDao {
 			MenuItem menuItem = new MenuItem(resultSet.getLong("me_id"), resultSet.getString("me_name"), resultSet.getFloat("me_price"), resultSet.getString("me_active").equals("Yes"), new SimpleDateFormat("yyyy-MM-dd").parse(resultSet.getString("me_date_of_launch")), resultSet.getString("me_category"), resultSet.getString("me_free_delivery").equals("Yes"));
 			arrayList.add(menuItem);
 			while (resultSet.next()) {
-				MenuItem menuItem1 = new MenuItem(resultSet.getLong("me_id"), resultSet.getString("me_name"), resultSet.getFloat("me_price"), resultSet.getString("me_active").equals("Yes"), new SimpleDateFormat("yyyy-MM-dd").parse(resultSet.getString("me_date_of_launch")), resultSet.getString("me_category"), resultSet.getString("me_free_delivery").equals("Yes"));
-				arrayList.add(menuItem1);
+				menuItem = new MenuItem(resultSet.getLong("me_id"), resultSet.getString("me_name"), resultSet.getFloat("me_price"), resultSet.getString("me_active").equals("Yes"), new SimpleDateFormat("yyyy-MM-dd").parse(resultSet.getString("me_date_of_launch")), resultSet.getString("me_category"), resultSet.getString("me_free_delivery").equals("Yes"));
+				arrayList.add(menuItem);
 			}
 			preparedStatement = connection.prepareStatement("select sum(me_price) from cart inner join menu_item on ct_me_id=me_id where ct_us_id=?");
 			preparedStatement.setInt(1, (int) userId);
@@ -70,7 +70,6 @@ public class CartDaoSqlImpl implements CartDao {
 		} finally {
 			try {
 				connection.close();
-				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -83,9 +82,14 @@ public class CartDaoSqlImpl implements CartDao {
 	public void removeCartItem(long userId, long menuItemId) {
 		Connection connection = ConnectionHandler.getConnection();
 		try {
-			PreparedStatement preparedStatement = connection.prepareStatement("delete from cart where ct_us_id=? and ct_me_id=?");
+			PreparedStatement preparedStatement = connection.prepareStatement("select ct_id from cart where ct_us_id=? and ct_me_id=?");
 			preparedStatement.setInt(1, (int) userId);
 			preparedStatement.setInt(2, (int) menuItemId);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			int cartId = resultSet.getInt(1);
+			preparedStatement = connection.prepareStatement("delete from cart where ct_id=?");
+			preparedStatement.setInt(1, cartId);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

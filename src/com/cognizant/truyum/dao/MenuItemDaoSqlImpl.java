@@ -15,13 +15,13 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 	@Override
 	public List<MenuItem> getMenuItemListAdmin() {
 		Connection connection = ConnectionHandler.getConnection();
-		List<MenuItem> arrayList = new ArrayList<>();
+		List<MenuItem> menuItemListAdmin = new ArrayList<>();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement("select * from menu_item");
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				MenuItem menuItem = new MenuItem(resultSet.getLong(1), resultSet.getString(2), resultSet.getFloat(3), resultSet.getString(4).equals("Yes"), new SimpleDateFormat("yyyy-MM-dd").parse(resultSet.getString(5)), resultSet.getString(6), resultSet.getString(7).equals("Yes"));
-				arrayList.add(menuItem);
+				menuItemListAdmin.add(menuItem);
 			}
 		} catch (SQLException | ParseException e) {
 			// TODO Auto-generated catch block
@@ -34,19 +34,19 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 				e.printStackTrace();
 			}
 		}
-		return arrayList;
+		return menuItemListAdmin;
 	}
 
 	@Override
 	public List<MenuItem> getMenuItemListCustomer() {
 		Connection connection = ConnectionHandler.getConnection();
-		List<MenuItem> arrayList = new ArrayList<>();
+		List<MenuItem> menuItemListCustomer = new ArrayList<>();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement("select * from menu_item where me_active='Yes' and datediff(curdate(), me_date_of_launch)>=0");
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				MenuItem menuItem = new MenuItem(resultSet.getLong(1), resultSet.getString(2), resultSet.getFloat(3), resultSet.getString(4).equals("Yes"), new SimpleDateFormat("yyyy-MM-dd").parse(resultSet.getString(5)), resultSet.getString(6), resultSet.getString(7).equals("Yes"));
-				arrayList.add(menuItem);
+				menuItemListCustomer.add(menuItem);
 			}
 		} catch (SQLException | ParseException e) {
 			// TODO Auto-generated catch block
@@ -59,7 +59,7 @@ public class MenuItemDaoSqlImpl implements MenuItemDao {
 				e.printStackTrace();
 			}
 		}
-		return arrayList;
+		return menuItemListCustomer;
 	}
 
 	@Override
